@@ -17,18 +17,51 @@
 
 /////// type aliases
 
+// type User = {
+//   name: string;
+//   email: string;
+//   isActive: boolean;
+// };
+
+// type Mystring = string;
+
+// function createUser(user: User): User {
+//   return { name: "", email: "", isActive: true };
+// }
+
+// createUser({ name: "", email: "", isActive: true });
+
+///////// READONLY ////////
+
 type User = {
+  readonly _id: string;
   name: string;
   email: string;
   isActive: boolean;
+  credCardDetails?: number; //optional
 };
 
-type Mystring = string;
+let myUser: User = {
+  _id: "12345",
+  name: "h",
+  email: "h@.com",
+  isActive: false,
+};
 
-function createUser(user: User): User {
-  return { name: "", email: "", isActive: true };
-}
+type cardNumber = {
+  cardNumber: string;
+};
 
-createUser({ name: "", email: "", isActive: true });
+type cardDate = {
+  cardDate: string;
+};
+
+type cardDetails = cardNumber &
+  cardDate & {
+    cvv: number;
+  };
+
+myUser.email = "h@gmail.com";
+// myUser._id = "333"  // error
 
 export {};
